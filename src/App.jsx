@@ -86,20 +86,15 @@ const App = () => {
 
   const handleAddFighter = (fighter) => {
     
-    const newMoney = money - fighter.price;
-    
-    if (newMoney >= 0){
+    if (fighter.price <= money){
       
-      setMoney(newMoney)
+      setMoney(prev => prev - fighter.price)
       
-      const newTeamArray = [...team, fighter]
-      setTeam(newTeamArray)
+      setTeam(prev => [...prev, fighter])
 
-      const newStrength = totalStrength + fighter.strength
-      setTotalStrength(newStrength)
+      setTotalStrength(prev => prev + fighter.strength)
 
-      const newAgility = totalAgility + fighter.agility
-      setTotalAgility(newAgility)
+      setTotalAgility(prev => prev + fighter.agility)
 
       setZombieFighters(prev => prev.filter(x => x !== fighter))
 
@@ -110,17 +105,13 @@ const App = () => {
 
   const handleRemoveMember = (member) => {
     
-    const newMoney = money + member.price;
-    setMoney(newMoney)
+    setMoney(prev => prev + member.price)
       
-    const newZombieFightersArray = [...zombieFighters, member]
-    setZombieFighters(newZombieFightersArray)
+    setZombieFighters(prev => [...prev, member])
 
-    const newStrength = totalStrength - member.strength
-    setTotalStrength(newStrength)
+    setTotalStrength(prev => prev - member.strength)
 
-    const newAgility = totalAgility - member.agility
-    setTotalAgility(newAgility)
+    setTotalAgility(prev => prev - member.agility)
 
     setTeam(prev => prev.filter(x => x !== member))
   }
