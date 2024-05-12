@@ -126,7 +126,10 @@ const App = () => {
         <ul>
           {team.length > 0   
             ? team.map((member, i)=>(
-                <TeamMember key={i} member={member} handleRemoveMember={handleRemoveMember}/>
+                <TeamMember 
+                  key={i} 
+                  member={member} 
+                  handleRemoveMember={handleRemoveMember}/>
               ))
             : <li>Pick some team members!</li> 
           }
@@ -134,11 +137,13 @@ const App = () => {
       <h3>Fighters:</h3>
       <ul>
         {zombieFighters.map((fighter, i)=>(
-          <Fighter key={i} fighter={fighter} handleAddFighter={handleAddFighter}/>
+          <Fighter 
+            key={i} 
+            fighter={fighter} 
+            handleAddFighter={handleAddFighter}/>
         ))}
       </ul>
     </>
-
   );
 }
 
